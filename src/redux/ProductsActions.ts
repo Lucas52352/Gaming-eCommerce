@@ -1,14 +1,11 @@
-import axios from 'axios'
-import { getProducts, getProductById } from './ProductsSlice'
+import axios from 'axios';
+import { getProducts } from './ProductsSlice';
 
-
-export const getProd = ()=>(dispatch: any)=>  {
-    try {
-        axios.get('http://localhost:3001/products')
-        .then(res=> dispatch(getProducts(res.data)))
-        
-    } catch (error) {
-        console.log(error, 'este es el errror');
-        
-    }
-}
+export const getProd = () => async (dispatch: any) => {
+  try {
+    const response = await axios.get('http://localhost:3001/api/products');
+    dispatch(getProducts(response.data));
+  } catch (error) {
+    console.log(error, 'este es el error');
+  }
+};
