@@ -1,0 +1,78 @@
+.footer{
+    display: flex;
+    background-color: black;
+    height: 300px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.iconSocialMedia{
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.iconSocialMedia:hover{
+    color: white;
+}
+
+.socialMedia{
+    color: rgb(144, 144, 144);
+}
+
+
+.linksGithub{
+    text-decoration: none;
+    color: rgb(144, 144, 144);
+}
+
+.pGitHub{
+    transition: 0.5s;
+}
+
+.pGitHub:hover{
+    transform: translateY(-5px);
+    color: white;
+}
+
+.linksGithub:hover{
+    color: white;
+}
+
+
+
+.service{
+    color: rgb(144, 144, 144);
+    text-align: center;
+    cursor: pointer;
+}
+
+.iconService{
+    transition: 0.5s;
+}
+
+.iconService:hover{
+    color: white;
+}
+
+.titleService{
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+}
+
+.copyright{
+    background-color: black;
+    color: rgb(154, 153, 153);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoFooter{
+    width: 150px;
+}
+
+.textCopy{
+
+}
