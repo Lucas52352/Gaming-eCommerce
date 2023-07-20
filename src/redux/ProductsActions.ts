@@ -4,7 +4,7 @@ import { getProducts, getProductById} from './ProductsSlice';
 
 export const getProd = () => async (dispatch: any) => {
   try {
-    const response = await axios.get('http://localhost:3001/api/products');
+    const response = await axios.get('http://localhost:3001/products');
     dispatch(getProducts(response.data));
   } catch (error) {
     console.log(error, 'este es el errorsdsdsd');
@@ -13,10 +13,11 @@ export const getProd = () => async (dispatch: any) => {
 
 export const getProdtById = (id: number) => async (dispatch: any) => {
   try {
-    const response = await axios.get(`http://localhost:3001/api/products/${id}`);
+    const response = await axios.get(`http://localhost:3001/products/${id}`);
     dispatch(getProductById(response.data));
     
   } catch (error) {
     console.log(error, 'travestisssssss');
   }
 }
+
