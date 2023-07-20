@@ -12,7 +12,57 @@
     width: 150px;
     height: 150px;
 }
+#logoPerfil{
+    border-radius: 100%;
+    max-width: 40px;
+}
+.botonesLogin{
+    background: none;
+    border: 3px solid white;
+    padding: 10px;
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .8s;
+}
+.searchcontain{
+    background-color: rgb(255, 255, 255);
+    position:absolute;
+    height: auto;
+    left: 553px;
+    max-width: 350px;
+    text-align: center;
+}
+.containerInfoP{
+    width: 100%;
+    height: auto;
+    transition: all 1s;
+}
+.containerInfoP:hover{
+    background-color: rgba(0, 0, 0, 0.164);
+}
+.searchP{
+    text-decoration: none;
+}
+.linkP{
+    text-decoration: none;
+    color: rgb(83, 83, 83);
+}
 
+.botonesLogin:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(204, 204, 204);
+}
+.containerBtnProfile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .btnNav{
     margin:10px;
     font-family: 'Raleway', sans-serif;
@@ -22,7 +72,14 @@
     padding:10px;
     width: 350px;
 }
-
+.logout{
+    color: white;
+    margin: 20px;
+}
+.logoutBtn{ 
+    background: none;
+    border: none;
+}
 .searchIcon{
     color: white;
     margin-left: 10px;
@@ -33,6 +90,7 @@
 .sectionSearchBar{
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .cart{

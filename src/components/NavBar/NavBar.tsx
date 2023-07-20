@@ -1,34 +1,93 @@
 import radtek from './assets/Radtek1.png'
 import './NavBar.css'
 import SearchIcon from '@mui/icons-material/Search';
-import Avatar from '@mui/material/Avatar';
+import { Link } from 'react-router-dom';
+import LoginIcon from '@mui/icons-material/Login';
 import Stack from '@mui/material/Stack';
 import { deepOrange} from '@mui/material/colors';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from 'react-redux'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Sections from './Sections';
 import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from 'react';
 
 
 const NavBar = () => {
+   const {user, isAuthenticated, loginWithRedirect, logout} = useAuth0();
+   const [search , setSearch] = useState("")
+   const productos = useSelector((state:any) => state.products)
    
+  const searcher = (event:any)=>{
+    setSearch(event.target.value)
+  }
+  const cleanState = ()=>{
+    setSearch("")
+  }
+  const results = !search ? productos: productos.products.filter((item:any)=> item.name.toLowerCase().includes(search.toLowerCase()))
+  console.log(results);
+  
   return (
     <div>
       <div className='navbar'>
         <div>
+          <Link to="/" >
           <img className='logo' src={radtek} alt="" />
+          </Link>
         </div>
 
         <div className='sectionSearchBar'>
-          <input placeholder='Search...' className='search' type="search" />
+          <div>
+          <input value={search} onChange={searcher} placeholder='Search...' className='search' type="search" />
           <SearchIcon className='searchIcon'/>
+          </div>
+          <div>
+
+             {
+               search
+              ?
+              <div className='searchcontain'>
+              {
+                results.map((item:any)=>{
+                  return(
+                    <div className='containerInfoP'>
+                      <Link to={`/product/${item.id}`} className='linkP' onClick={()=> cleanState()}>
+                      <p className='searchP'>{item.name}</p>
+                      </Link>
+                    </div>
+                  )
+                })
+              }
+              </div>
+              
+              :
+              null
+            }
+            </div>
         </div>
 
         <div className='sectionCart'>
+          <Link to="/cart">
           <ShoppingCartIcon className='cart'/>
+          </Link>
           <FavoriteIcon className='fav'/>
           <Stack direction="row" spacing={2}>
-            <Avatar sx={{ bgcolor: deepOrange[500] }}>ML</Avatar>
+            {
+              isAuthenticated 
+              ?
+              <div>
+
+              <img src={user?.picture} alt="" id='logoPerfil'/>
+              <button onClick={()=> logout()} className='logoutBtn'>
+              <LoginIcon className='logout'/>
+              </button>
+              </div>
+              :
+              <div className='containerBtnProfile'>
+              <button onClick={() => loginWithRedirect()} className='botonesLogin'>Login</button>
+              <button onClick={() => loginWithRedirect()} className='botonesLogin'>Register</button>
+              </div>
+            }
           </Stack>
         </div>
       </div>

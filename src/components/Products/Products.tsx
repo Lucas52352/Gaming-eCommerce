@@ -15,7 +15,7 @@ const Products = () => {
     const [userNext , setUserNext] = useState({
       name:"",
       email:""
-    })
+    });
     useEffect(() => {
       if(user?.name && user?.email){
         setUserNext({
@@ -31,13 +31,18 @@ const Products = () => {
     const response = ()=>{
       console.log("USUARIO CREADO");
       return axios.post("http://localhost:3001/user", userNext)
-      
     }
 
+    let initialPaginate = 0;
+    let paginas = Math.floor(productos.products.length/4)
+    let nextPage = initialPaginate + 1
+
+    // const paginado = 
     
   return (
+    <div className="homeContainer">
+
     <div className='sectionCards'>
-      <button onClick={()=> logout()}>ASDAS</button>
        {
         productos.products.map((prod:any) => {
           return(
@@ -51,11 +56,12 @@ const Products = () => {
               category={prod.category}
               color={prod.color}
               brand={prod.brand}
-            />
-          )
-        })
-       }
+              />
+              )
+            })
+          }
     </div>
+          </div>
   )
 }
 
