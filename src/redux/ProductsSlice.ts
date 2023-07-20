@@ -4,14 +4,14 @@ export const productsSlice = createSlice({
     name: 'products',
     initialState:{
         products:[],
-        detail:{}
+        productById:[]
     },
     reducers:{
         getProducts: (state, action) => {
             state.products = action.payload
         },
         getProductById: (state, action) => {
-            state.detail = action.payload
+            state.productById = action.payload
         }
     }
 })
