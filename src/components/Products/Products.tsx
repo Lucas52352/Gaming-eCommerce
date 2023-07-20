@@ -41,7 +41,7 @@ const Products = () => {
     
   return (
     <div className="homeContainer">
-
+      <p style={{fontSize: 28, alignSelf: 'start', marginLeft: 50, marginTop: 100}}>All Products</p>
     <div className='sectionCards'>
        {
         productos.products.map((prod:any) => {
