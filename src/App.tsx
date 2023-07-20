@@ -1,5 +1,6 @@
 import Detail from './components/Detail/Detail'
 import Home from './components/Home/Home'
+
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Carrito from './components/Carrito/Carrito'
