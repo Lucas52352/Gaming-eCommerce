@@ -7,9 +7,11 @@ import { deepOrange} from '@mui/material/colors';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Sections from './Sections';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 const NavBar = () => {
+   
   return (
     <div>
       <div className='navbar'>

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+
+.loginContainer{
+    height: 100vh;
+    background-image: url("https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1336x768.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#logo{
+    max-width: 350px;
+}
+.botonesLogin{
+    background: none;
+    border: 4px solid white;
+    padding: 10px;
+    width: 200px;
+    height: 70px;
+    font-size: 25px;
+    margin: 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    transition: all .8s;
+}
+.botonesLogin:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(204, 204, 204);
+}
