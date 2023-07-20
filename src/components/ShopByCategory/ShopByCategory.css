@@ -1,0 +1,77 @@
+.sectionCategories{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: black;
+}
+
+
+.categoryKeyboard{
+    width: 300px;
+    height: 200px;
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.632);
+    background-image: url('./assets/cardCategory.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+    border: solid 1px white;
+}
+
+.categoryKeyboard:hover{
+    transform: translateY(-5px);
+}
+
+.categoryText{
+    font-size: 28px;
+    font-weight: bolder;
+    color: white;
+    
+}
+
+.categoryHeadphones{
+    width: 300px;
+    height: 200px;
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.632);
+    background-image: url('./assets/cardHeadphones.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+    border: solid 1px white;
+}
+
+.categoryHeadphones:hover{
+    transform: translateY(-5px);
+}
+
+.categoryMouses{
+    width: 300px;
+    height: 200px;
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.632);
+    background-image: url('./assets/cardMouses.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+    border: solid 1px white;
+}
+
+.categoryMouses:hover{
+    transform: translateY(-5px);
+}
