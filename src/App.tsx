@@ -1,15 +1,17 @@
 import Detail from './components/Detail/Detail'
 import Home from './components/Home/Home'
 import { Routes, Route } from 'react-router-dom'
-import Login from './components/Login/Login'
+import NavBar from './components/NavBar/NavBar'
+import Carrito from './components/Carrito/Carrito'
 function App() {
 
   return (
       <div>
+        <NavBar/>
        <Routes>
-        <Route path="/" element={<Login/>}/>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/cart" element={<Carrito/>}/>
         <Route path="/product/:id" element={<Detail/>}/>
-        <Route path="/home" element={<Home/>}/>
        </Routes>
       </div>
       

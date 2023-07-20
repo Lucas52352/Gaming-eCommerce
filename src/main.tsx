@@ -13,7 +13,7 @@ ReactDOM.render(
   domain="dev-zlnjdju728eaecdq.us.auth0.com"
   clientId="ipVtGdvuEvGmfC7CJ2epvbZHlAqJIv8Q"
   authorizationParams={{
-    redirect_uri: "http://localhost:5173/home"
+    redirect_uri: "http://localhost:5173/"
   }}
 >
 
