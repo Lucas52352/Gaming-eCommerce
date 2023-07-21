@@ -8,9 +8,15 @@ const Sections = () => {
               <Link to="/">
                 <button className='btnNav'>Home</button>
               </Link>
+              <Link to="/keyboards">
                 <button className='btnNav'>Keyboards</button>
+              </Link>
+              <Link to="/mouses">
                 <button className='btnNav'>Mouses</button>
+              </Link>
+              <Link to="/headphones">
                 <button className='btnNav'>Headphones</button>
+              </Link>
             </div> 
         
     </div>
