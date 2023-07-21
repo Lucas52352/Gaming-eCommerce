@@ -33,12 +33,6 @@ const Products = () => {
       return axios.post("http://localhost:3001/user", userNext)
     }
 
-    let initialPaginate = 0;
-    let paginas = Math.floor(productos.products.length/4)
-    let nextPage = initialPaginate + 1
-
-    // const paginado = 
-    
   return (
     <div className="homeContainer">
       <p style={{fontSize: 28, alignSelf: 'start', marginLeft: 50, marginTop: 100}}>All Products</p>

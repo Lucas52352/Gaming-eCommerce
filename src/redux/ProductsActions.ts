@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getProducts, getProductById} from './ProductsSlice';
+import { getProducts, getProductById, clear} from './ProductsSlice';
 
 
 export const getProd = () => async (dispatch: any) => {
@@ -21,3 +21,6 @@ export const getProdtById = (id: number) => async (dispatch: any) => {
   }
 }
 
+export const cleanState = ()=>  async (dispatch: any)=>{
+      dispatch(clear());
+}
