@@ -11,11 +11,12 @@ import axios from "axios"
 const Products = () => {
     const productos = useSelector((state:any) => state.products)
     const dispatch: any = useDispatch()
-    const { logout, user} = useAuth0();
+    const { user} = useAuth0();
     const [userNext , setUserNext] = useState({
       name:"",
       email:""
     });
+    
     useEffect(() => {
       if(user?.name && user?.email){
         setUserNext({
@@ -29,7 +30,6 @@ const Products = () => {
     }, [user])
 
     const response = ()=>{
-      console.log("USUARIO CREADO");
       return axios.post("http://localhost:3001/user", userNext)
     }
 

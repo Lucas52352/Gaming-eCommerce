@@ -7,6 +7,7 @@ import Carrito from './components/Carrito/Carrito'
 import KeyboardCategory from './components/Category/KeyboardCategory'
 import Headphones from './components/Category/Headphones'
 import MouseCategory from './components/Category/MouseCategory'
+import Payment from './components/Payment/Payment'
 function App() {
 
   return (
@@ -14,6 +15,7 @@ function App() {
         <NavBar/>
        <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/payments" element={<Payment/>}/>
         <Route path="/cart" element={<Carrito/>}/>
         <Route path="/product/:id" element={<Detail/>}/>
         <Route path="/keyboards" element={<KeyboardCategory/>}/>

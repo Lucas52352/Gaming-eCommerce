@@ -17,13 +17,12 @@ const NavBar = () => {
    const [search , setSearch] = useState("")
    const productos = useSelector((state:any) => state.products)
    const cart = useSelector((state:any) => state.cart.cartProducts)
-   const mapingindemap = cart.flatMap((prod:any)=>{
-      return prod.map((element:any)=> {return element}) 
-   })
- 
-   
-  console.log(mapingindemap, "disdispara");
-  
+   const cantidad = cart.map((item:any)=>{
+        return (+item.cant)
+      })
+   const totalCantidad = cantidad.reduce((accumulator:any, currentValue:any) => {
+        return accumulator + currentValue;
+      }, 0);
   const searcher = (event:any)=>{
     setSearch(event.target.value)
   }
@@ -31,7 +30,7 @@ const NavBar = () => {
     setSearch("")
   }
   const results = !search ? productos: productos.products.filter((item:any)=> item.name.toLowerCase().includes(search.toLowerCase()))
-  console.log(results);
+  
   
   return (
     <div>
@@ -77,7 +76,7 @@ const NavBar = () => {
         <div className='sectionCart'>
           <Link to="/cart" className='linkIcon'>
           <ShoppingCartIcon className='cart'/>
-          <span>a</span>
+          <span>{totalCantidad}</span>
           </Link>
           <FavoriteIcon className='fav'/>
           <Stack direction="row" spacing={2}>

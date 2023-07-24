@@ -21,7 +21,7 @@ const Detail = () => {
   const prodById = useSelector((state:any) => state.products.productById)
   const cart = useSelector((state:any) => state.cart.cartProducts)
 
-  console.log(id);  
+  console.log(cart, "CARRITO");  
 
   const addProd = ()=>{
     if(prodById){
@@ -40,8 +40,6 @@ const Detail = () => {
     }
   }, [])
   
-  console.log(prodById);
-  console.log(cart,"CART ASHEI");
 
   return (
     <div>
