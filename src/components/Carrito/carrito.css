@@ -1,0 +1,49 @@
+.cartAllContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.imageCart{
+    max-width: 100px;
+    padding: 20px;
+}
+.cartContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin: 9px;
+}
+.div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#h3{
+    font-size: 17px;
+    padding: 30px;
+}
+.hr{
+    width: 50vw;
+}
+.cartInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.carContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bought{
+    background-color: rgb(230, 66, 37);
+    border: none;
+    color: white;
+    width: 400px;
+    height: 60px;
+    border-radius: 6px;
+}

@@ -22,11 +22,12 @@ const Products = () => {
   
 
     const dispatch: any = useDispatch()
-    const { logout, user} = useAuth0();
+    const { user} = useAuth0();
     const [userNext , setUserNext] = useState({
       name:"",
       email:""
     });
+    
     useEffect(() => {
       if(user?.name && user?.email){
         setUserNext({
