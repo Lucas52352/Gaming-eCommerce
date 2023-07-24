@@ -3,6 +3,7 @@ import Carrusel from '../Carousel/Carousel';
 import Products from '../Products/Products';
 import Footer from '../Footer/Footer';
 import ShopByCategory from '../ShopByCategory/ShopByCategory';
+import Paginado from '../Pagination/Pagination';
 /* import CarouselBrands from '../CarouselBrands/CarouselBrands'; */
 
 
@@ -13,6 +14,7 @@ function Home() {
         <ShopByCategory/>
         {/* <CarouselBrands/> */}
         <Products/>
+        <Paginado />
         <Footer/>
     </div>
   )

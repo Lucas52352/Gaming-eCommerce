@@ -15,7 +15,7 @@ interface CardProps {
 const Cards = ({id, name, image, price}: CardProps) => {
   return (
     
-
+    
       <div className='card' key={id}>
         <Link className='link' to={`/product/${+id}`}>
         <img className="imgCard" src={image[0]} alt="" />
