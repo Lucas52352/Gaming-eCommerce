@@ -4,7 +4,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import LoginIcon from '@mui/icons-material/Login';
 import Stack from '@mui/material/Stack';
-import { deepOrange} from '@mui/material/colors';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useSelector } from 'react-redux'
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -17,7 +16,14 @@ const NavBar = () => {
    const {user, isAuthenticated, loginWithRedirect, logout} = useAuth0();
    const [search , setSearch] = useState("")
    const productos = useSelector((state:any) => state.products)
+   const cart = useSelector((state:any) => state.cart.cartProducts)
+   const mapingindemap = cart.flatMap((prod:any)=>{
+      return prod.map((element:any)=> {return element}) 
+   })
+ 
    
+  console.log(mapingindemap, "disdispara");
+  
   const searcher = (event:any)=>{
     setSearch(event.target.value)
   }
@@ -35,6 +41,7 @@ const NavBar = () => {
           <img className='logo' src={radtek} alt="" />
           </Link>
         </div>
+        <div className="searchContainer">
 
         <div className='sectionSearchBar'>
           <div>
@@ -45,7 +52,7 @@ const NavBar = () => {
 
              {
                search
-              ?
+               ?
               <div className='searchcontain'>
               {
                 results.map((item:any)=>{
@@ -64,11 +71,13 @@ const NavBar = () => {
               null
             }
             </div>
+            </div>
         </div>
 
         <div className='sectionCart'>
-          <Link to="/cart">
+          <Link to="/cart" className='linkIcon'>
           <ShoppingCartIcon className='cart'/>
+          <span>a</span>
           </Link>
           <FavoriteIcon className='fav'/>
           <Stack direction="row" spacing={2}>

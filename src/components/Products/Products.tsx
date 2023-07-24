@@ -43,6 +43,7 @@ const Products = () => {
       return axios.post("http://localhost:3001/user", userNext)
     }
 
+
     const handleCategoryChange = (event:any) => {
       const selectedCategory = event.target.value;
       setSelectedCategory(selectedCategory);
@@ -68,9 +69,7 @@ const Products = () => {
       return isCategoryMatch && isBrandMatch && isColorMatch;
     });
 
-    
-
-    
+  
   return (
     <div className="homeContainer">
       <p style={{fontSize: 28, marginLeft: 50, marginTop: 100}}></p>

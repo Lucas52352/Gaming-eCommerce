@@ -17,6 +17,7 @@ export const productsSlice = createSlice({
         getProductById: (state, action) => {
             state.productById = action.payload
         },
+
         setCategoryFilter: (state, action) => {
             state.selectedCategory = action.payload;
         },
@@ -25,10 +26,15 @@ export const productsSlice = createSlice({
         },
         setColorFilter(state, action){
             state.selectedColor = action.payload;
+
+        clear:(state)=>{
+            state.productById = []
+
         }
     }
 })
 
-export const {getProducts, getProductById, setCategoryFilter, setBrandFilter, setColorFilter} = productsSlice.actions
+
+export const {getProducts, getProductById, setCategoryFilter, setBrandFilter, setColorFilter, clear} = productsSlice.actions
 
 export default productsSlice.reducer

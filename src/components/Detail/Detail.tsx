@@ -1,30 +1,47 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { getProdtById } from '../../redux/ProductsActions'
-import Carousel from 'react-bootstrap/Carousel';
+import { cleanState, getProdtById } from '../../redux/ProductsActions'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Detail.css'
 import Swal from 'sweetalert2'
+import { pushCartProd } from '../../redux/CartActions';
 
 const Detail = () => {
-
+  interface Num{
+    cantidad: number
+  }
+  const [cantidad , setCantidad] = useState<Num>({
+    cantidad:0
+  })
   const dispatch: any = useDispatch()
 
   const { id } = useParams()
 
   const prodById = useSelector((state:any) => state.products.productById)
+  const cart = useSelector((state:any) => state.cart.cartProducts)
 
-  console.log(id);
-  
-  
+  console.log(id);  
+
+  const addProd = ()=>{
+    if(prodById){
+      dispatch(pushCartProd(prodById, cantidad))
+    }
+  }
+  const cant = (event:any)=>{
+    setCantidad(event.target.value);
+  }
   useEffect(() => {
     if (id) {
       dispatch(getProdtById(+id))
     }
+    if(prodById){
+      dispatch(cleanState())
+    }
   }, [])
   
   console.log(prodById);
+  console.log(cart,"CART ASHEI");
 
   return (
     <div>
@@ -60,14 +77,21 @@ const Detail = () => {
                   type="number"
                   defaultValue="1"
                   style={{ maxWidth: '3rem' }}
+                  onChange={cant}
                 />
-                <button className="btn btn-outline-dark flex-shrink-0 btn" type="button" onClick={() => Swal.fire({
-                  position: 'center',
-                  icon: 'success',
-                  title: 'Product added to cart',
-                  showConfirmButton: false,
-                  timer: 1500
-})}>
+                <button className="btn btn-outline-dark flex-shrink-0 btn" type="button" onClick={() =>{
+                  
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Product added to cart',
+                    showConfirmButton: false,
+                    timer: 1500
+  
+                  })
+                  addProd()
+                } 
+                } >  
                   <i className="bi-cart-fill me-1" />
                   Add to cart
                 </button>

@@ -33,14 +33,7 @@
     cursor: pointer;
     transition: all .8s;
 }
-.searchcontain{
-    background-color: rgb(255, 255, 255);
-    position:absolute;
-    height: auto;
-    left: 553px;
-    max-width: 350px;
-    text-align: center;
-}
+
 .containerInfoP{
     width: 100%;
     height: auto;
@@ -51,12 +44,21 @@
 }
 .searchP{
     text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
 }
 .linkP{
     text-decoration: none;
     color: rgb(83, 83, 83);
 }
-
+.linkIcon{
+    text-decoration: none;
+    color: white ;
+}
+span{
+    font-size: 15px;
+    color: white;
+}
 .botonesLogin:hover{
     background-color: rgb(255, 0, 0);
     color: rgb(204, 204, 204);
@@ -74,6 +76,10 @@
 .search{
     padding:10px;
     width: 350px;
+    outline: none; /* Quitamos el contorno cuando el input tiene el foco */
+}
+.search:focus{
+    outline: 2px solid rgb(204, 64, 64)
 }
 .logout{
     color: white;
@@ -89,11 +95,36 @@
     align-items: center;
     
 }
+.searchContainer {
+  position: relative;
+}
 
-.sectionSearchBar{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.sectionSearchBar {
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  margin-left: 8px; 
+}
+
+.searchcontain {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+  max-width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 4px;
+  z-index: 1;
+
 }
 
 .cart{
