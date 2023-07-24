@@ -1,13 +1,119 @@
 .sectionCards{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    max-width: 80%;
     
   
 }
 .homeContainer{
+    /* align-items: center;
+    flex-direction: column; */
     display: flex;
+}
 
-    align-items: center;
+
+.sectionFilters{
+    background-color: black;
+    border-radius: 10px;
+    margin-top: 50px;
+    width: 20%;
+    height:1200px;
+}
+
+.filters{
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
     flex-direction: column;
+}
+
+.logosBrands{
+    width: 80px;
+    margin:10px;
+    align-self: center;
+}
+
+.filtersColors{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: rgb(195, 195, 195);
+    text-align: center;
+    margin-top: 50px;
+}
+
+.colorBlue{
+    padding: 20px;
+    background-color: blue;
+    border-radius: 100px;
+    width: 20px;
+}
+
+.colorBlack{
+    padding: 20px;
+    background-color: rgb(16, 16, 16);
+    border-radius: 100px;
+    width: 20px;
+}
+
+.colorWhite{
+    padding: 20px;
+    background-color:rgb(255, 255, 255);
+    border-radius: 100px;
+    width: 20px;
+}
+
+.colorGray{
+    padding: 20px;
+    background-color:rgb(93, 93, 93);
+    border-radius: 100px;
+    width: 20px;
+}
+
+.colorBeige{
+    padding: 20px;
+    background-color:rgb(230, 230, 193);
+    border-radius: 100px;
+    width: 20px;
+}
+
+.colorPink{
+    padding: 20px;
+    background-color:pink;
+    border-radius: 100px;
+    width: 20px;
+}
+
+.colorLila{
+    padding: 20px;
+    background-color:#C8A2C8;
+    border-radius: 100px;
+    width: 20px;
+}
+
+.divColor{
+    margin: 10px;
+}
+
+
+.divBrands{
+    display: flex;
+    flex-direction: column;
+}
+
+.btnBrands{
+    background-color: black;
+    color: white;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.btnCategories{
+    background-color: black;
+    margin-top: 10px;
+    border: none;
+    color: white;
 }
