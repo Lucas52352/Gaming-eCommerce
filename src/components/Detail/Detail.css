@@ -1,8 +1,8 @@
 
 
-
+@import url('https://fonts.googleapis.com/css2?family=REM&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
 *{
     font-family: 'Raleway', sans-serif;;
 }
@@ -22,4 +22,26 @@
     border-radius: 10px;
     margin: 20px;
 }
-
+.modalImg{
+    max-width: 100px;
+}
+.modal-modal-title{
+    display: flex;
+    flex-direction: column;
+}
+.btnModal{
+    background-color: brown;
+    border: none;
+    width: 250px;
+    margin: 10px;
+    height: 58px;
+    border-radius: 5px;
+    border: 3px solid white;
+    color: white;
+    font-weight: 300;
+    font-family: 'REM', sans-serif;
+}
+.pModal{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+}

@@ -7,7 +7,7 @@ export const getProd = () => async (dispatch: any) => {
     const response = await axios.get('http://localhost:3001/products');
     dispatch(getProducts(response.data));
   } catch (error) {
-    console.log(error, 'este es el errorsdsdsd');
+    console.log(error);
   }
 };
 
@@ -17,7 +17,7 @@ export const getProdtById = (id: number) => async (dispatch: any) => {
     dispatch(getProductById(response.data));
     
   } catch (error) {
-    console.log(error, 'travestisssssss');
+    console.log(error);
   }
 }
 
