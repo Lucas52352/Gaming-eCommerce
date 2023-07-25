@@ -43,10 +43,9 @@ const Detail = () => {
     cantidad: number
   }
   const {isAuthenticated , loginWithRedirect} = useAuth0()
-  console.log(isAuthenticated, "AUTH0");
   
   const [cantidad , setCantidad] = useState<Num>({
-    cantidad:0
+    cantidad:1
   })
 
   const dispatch: any = useDispatch()
@@ -64,7 +63,6 @@ const Detail = () => {
     return item
   });
 
-  console.log(prodId[0]);
   
   //ESTADO OBJETO CON LOS DEL CARRITO
   const cart = useSelector((state:any) => state.cart.cartProducts)
