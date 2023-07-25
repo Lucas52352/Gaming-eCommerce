@@ -26,7 +26,7 @@ export const productsSlice = createSlice({
         },
         setColorFilter(state, action){
             state.selectedColor = action.payload;
-
+        },
         clear:(state)=>{
             state.productById = []
 
