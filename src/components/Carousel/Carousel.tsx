@@ -1,8 +1,8 @@
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import headphoneCarousel from './assets/gifCarrusel3.gif'
-import mouseCarousel from './assets/gifCarrusel4.gif'
-import keyboardCarousel from './assets/gifCarrusel5.gif'
+import headphoneCarousel from './assets/hyperxCarrusel.gif'
+import mouseCarousel from './assets/mouseCarrusel.gif'
+import keyboardCarousel from './assets/keyboardCarrusel.gif'
 
 function Carrusel() {
   return (
