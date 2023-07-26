@@ -18,7 +18,7 @@ const Cards = ({id, name, image, price}: CardProps) => {
     
       <div className='card' key={id}>
         <Link className='link' to={`/product/${+id}`}>
-        <img className="imgCard" src={image[0]} alt="" />
+        <img className="imgCard" src={image} alt="" />
         <div className='sectionText'>
           <p className='textCard'>{name}</p>
           <hr />

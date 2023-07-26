@@ -19,6 +19,8 @@ const Detail = () => {
   const { id } = useParams()
 
   const prodById = useSelector((state:any) => state.products.productById)
+  console.log(prodById);
+  
   const cart = useSelector((state:any) => state.cart.cartProducts)
 
   console.log(cart, "CARRITO");  
@@ -53,7 +55,7 @@ const Detail = () => {
             <div className="col-md-6">
               <img
                 className="card-img-top mb-5 mb-md-0"
-                src={item.image[0]}
+                src={item.image}
                 alt="..."
               />
               
