@@ -8,6 +8,7 @@ import KeyboardCategory from './components/Category/KeyboardCategory'
 import Headphones from './components/Category/Headphones'
 import MouseCategory from './components/Category/MouseCategory'
 import Payment from './components/Payment/Payment'
+import Footer from './components/Footer/Footer'
 function App() {
 
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/headphones" element={<Headphones/>}/>
         <Route path="/mouses" element={<MouseCategory/>}/>
        </Routes>
+       <Footer/>
       </div>
       
    
