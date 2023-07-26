@@ -101,6 +101,7 @@ const Detail = () => {
   
   return (
     <div>
+
       {prodById &&
         prodById.map((item:any) => {
           return (
