@@ -10,9 +10,15 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Sections from './Sections';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from 'react';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 
 const NavBar = () => {
+   const [show, setShow] = useState(false);
+   const handleClose = () => setShow(false);
+   const handleShow = () => setShow(true);
    const {user, isAuthenticated, loginWithRedirect, logout} = useAuth0();
    const [search , setSearch] = useState("")
    const productos = useSelector((state:any) => state.products)
@@ -31,10 +37,41 @@ const NavBar = () => {
   }
   const results = !search ? productos: productos.products.filter((item:any)=> item.name.toLowerCase().includes(search.toLowerCase()))
   
-  
   return (
     <div>
       <div className='navbar'>
+        <div className='menuHamb'>
+
+      <button className='btnSideBarNavbar' onClick={handleShow}>
+        <MenuIcon/>
+      </button>
+
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body className='sideBarMenuHamb'>
+            <Stack className='logSidebar' direction="row" spacing={2}>
+            {
+              isAuthenticated 
+              ?
+              <div>
+
+              <img src={user?.picture} alt="" id='logoPerfil'/>
+              <button onClick={()=> logout()} className='logoutBtn'>
+              <LoginIcon className='logout'/>
+              </button>
+              </div>
+              :
+              <div className='containerBtnProfile'>
+              <button onClick={() => loginWithRedirect()} className='botonesLogin'>Login</button>
+              <button onClick={() => loginWithRedirect()} className='botonesLogin'>Register</button>
+              </div>
+            }
+          </Stack>
+        </Offcanvas.Body>
+      </Offcanvas>
+        </div>
         <div>
           <Link to="/" >
           <img className='logo' src={radtek} alt="" />
@@ -45,7 +82,7 @@ const NavBar = () => {
         <div className='sectionSearchBar'>
           <div>
           <input value={search} onChange={searcher} placeholder='Search...' className='search' type="search" />
-          <SearchIcon className='searchIcon'/>
+            <SearchIcon className='searchIcon'/>
           </div>
           <div>
 
@@ -58,7 +95,10 @@ const NavBar = () => {
                   return(
                     <div className='containerInfoP'>
                       <Link to={`/product/${item.id}`} className='linkP' onClick={()=> cleanState()}>
-                      <p className='searchP'>{item.name}</p>
+                        <div style={{display:'flex', alignItems:'center'}}>
+                          <img style={{width:50, margin:10}} src={item.image} alt="" />
+                          <p className='searchP'>{item.name}</p>
+                        </div>
                       </Link>
                     </div>
                   )
@@ -79,6 +119,8 @@ const NavBar = () => {
           <span>{totalCantidad}</span>
           </Link>
           <FavoriteIcon className='fav'/>
+          <div className='logMenuBar'>
+
           <Stack direction="row" spacing={2}>
             {
               isAuthenticated 
@@ -97,6 +139,7 @@ const NavBar = () => {
               </div>
             }
           </Stack>
+            </div>
         </div>
       </div>
           <Sections/>

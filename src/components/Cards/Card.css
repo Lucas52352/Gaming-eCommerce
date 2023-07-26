@@ -10,6 +10,7 @@
 
 .card{
     max-width: 300px;
+    max-height: 350px;
     align-items: center;
     margin:30px;
     display:flex;

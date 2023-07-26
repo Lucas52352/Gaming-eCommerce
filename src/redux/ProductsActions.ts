@@ -14,10 +14,10 @@ export const getProd = () => async (dispatch: any) => {
 export const getProdtById = (id: number) => async (dispatch: any) => {
   try {
     const response = await axios.get(`http://localhost:3001/products/${id}`);
-    dispatch(getProductById(response.data));
-    
+    dispatch(getProductById([response.data]));
   } catch (error) {
     console.log(error);
+    
   }
 }
 

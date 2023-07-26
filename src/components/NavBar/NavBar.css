@@ -46,6 +46,7 @@
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-weight: 700;
+    margin: 5px;
 }
 .linkP{
     text-decoration: none;
@@ -139,4 +140,37 @@ span{
 .fav{
     color: white;
     margin: 20px;
+}
+
+.menuHamb{
+    display: none;
+}
+
+
+@media(max-width:1080px){
+    .menuHamb{
+        display: flex;
+        flex-direction: column;
+    }
+    .sideBarMenuHamb{
+        background-color: black;
+    }
+    .sectionSearchBar{
+        display: none;
+    }
+    .logMenuBar{
+        display: none;
+    }
+    .btnSideBarNavbar{
+        background-color: black;
+        color: white;
+        border: none;
+    }
+    .logo{
+        margin-left: 20%;
+    }
+    .navbar{
+        justify-content: space-evenly;
+    }
+    
 }
