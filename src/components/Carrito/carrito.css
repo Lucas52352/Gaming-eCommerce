@@ -11,7 +11,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     width: 100%;
     margin: 9px;
 }
@@ -38,6 +37,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+
 }
 .bought{
     background-color: rgb(230, 66, 37);

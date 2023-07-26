@@ -101,6 +101,7 @@ const Detail = () => {
   
   return (
     <div>
+
       {prodById &&
         prodById.map((item:any) => {
           return (
@@ -111,7 +112,7 @@ const Detail = () => {
                     <div className="col-md-6">
                       <img
                         className="card-img-top mb-5 mb-md-0"
-                        src={item.image}
+                        src={item.image[0]}
                         alt="..."
                       />
                     </div>

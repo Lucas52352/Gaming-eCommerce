@@ -27,6 +27,7 @@ label{
     padding: 20px;
     width: 90%;
     font-family: 'Varela Round', sans-serif;
+    font-size: 15px;
 }
 .labelContainer{
     display: flex;
@@ -43,7 +44,7 @@ label{
     border-radius: 4px;
     color: rgb(194, 194, 194);
     transition: all .2s;
-    font-size: 13px;
+    font-size: 14px;
     outline: none;
 }
 
@@ -56,4 +57,20 @@ label{
     color: white;
     margin: 10px;
     width: 100%;
+}
+.buyBtn{
+    border: none;
+    background-color: rgb(50, 148, 187);
+    padding: 15px;
+    border-radius: 7px;
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+    font-weight: 800;
+    border: 3px solid rgb(32, 32, 32);
+    transition: all .6s;
+
+}
+.buyBtn:hover{
+    background-color: rgb(165, 34, 34);
+    color: rgb(255, 255, 255);
 }

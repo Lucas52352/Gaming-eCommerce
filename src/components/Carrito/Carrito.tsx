@@ -1,6 +1,9 @@
-import { useSelector } from 'react-redux'
-import "./carrito.css"
+import { useSelector } from 'react-redux';
+import "./carrito.css";
+import { useNavigate } from 'react-router-dom';
+
 function Carrito() {
+  const navigate = useNavigate()
   const cart = useSelector((state:any) => state.cart.cartProducts)
   console.log(cart);
   const total = cart.map((item:any)=> item.product)
@@ -19,7 +22,9 @@ function Carrito() {
       numbers += Math.floor(element[0])
     }
   } 
+  const bought = ()=>{
 
+  }
   return (
     <div className='carContainer'>
       <hr />
@@ -58,7 +63,12 @@ function Carrito() {
         }
       <div style={{display:"flex", alignItems:"center", flexDirection:"column", margin: "40px", width:"100vw", justifyContent:"end"}}>
       <p>Total: {numbers}$</p>
-     <button className='bought'>Buy</button>
+     <button className='bought' onClick={()=>{
+      if(cart.length > 0){
+        navigate("/payments")
+      }
+     } 
+     }>Buy</button>
         </div>
    </div>
   )

@@ -41,6 +41,7 @@ function Payment() {
                 }}}}/>
                 <hr className='white'/>
           </div>
+          <button className='buyBtn'>BUY</button>
         </form>
       </Elements>
     </div>
