@@ -67,3 +67,12 @@
         justify-content: center;
     }
   }
+
+  @media(max-width:480px){
+    .searchMobile{
+        width: 250px;
+    }
+    .searchcontainMobile{
+        width: 250px;
+    }
+  }

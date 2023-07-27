@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Card.css';
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
+
 
 interface CardProps {
   id: number;
@@ -14,7 +15,7 @@ interface CardProps {
   category: string;
 }
 
-const Cards = ({ id, name, image, price }: CardProps) => {
+const Cards = ({ id, name, image, price}: CardProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -26,11 +27,12 @@ const Cards = ({ id, name, image, price }: CardProps) => {
       // Redirige al enlace `/product/${id}` después de 2 segundos (cuando isLoading sea falso)
       navigate(`/product/${id}`);
     }, 3000); // 2 segundos de duración del Loader
-  };
+  }
+
 
   return (
     <div className='card' key={id}>
-      <div className='link' onClick={handleCardClick} >
+      <div className='link' onClick={handleCardClick}>
         <img className="imgCard" src={image} alt="" />
         <div className='sectionText'>
           <p className='textCard'>{name}</p>

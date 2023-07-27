@@ -1,17 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
 import './carrito.css';
 import { useNavigate } from 'react-router-dom';
-import deleteRed from './assets/deleteRed.png';
+import DeleteIcon from '@mui/icons-material/Delete';
 // import deleteBlack from './assets/deleteBlack.png'
 import { removeCartProd } from '../../redux/CartActions';
 import { Dispatch } from '@reduxjs/toolkit';
+import LoaderDelete from '../Loader/LoaderDelete/LoaderDelete'
+import { useState } from 'react';
 
 function Carrito() {
   const navigate = useNavigate();
   const dispatch: Dispatch<any> = useDispatch();
   const cart = useSelector((state: any) => state.cart.cartProducts);
   const total = cart.map((item: any) => item.product);
-
+  const [showLoader, setShowLoader] = useState(false);
   console.log(cart, 'CART');
   
 
@@ -34,7 +36,13 @@ function Carrito() {
   
   const deleteFromCart = (id: any) => {
     console.log(id);
+    setShowLoader(true);
+
     dispatch(removeCartProd(id))
+
+    setTimeout(() => {
+      setShowLoader(false);
+    }, 3000);
     
   };
 
@@ -56,15 +64,15 @@ function Carrito() {
                       />
                       <div className="cartInfo">
                         <h3 id="h3">{item.name}</h3>
-                        <hr className="hr" />
                       </div>
                       <h4 id="h3">${item.price}</h4>
+
                     </div>
                   );
                 })}
-                <h3 id="h3"> Quantity:{item.cant}</h3>
-                <button onClick={() => deleteFromCart(item.product[0].id)}>
-                  <img src={deleteRed} />
+                <h3 id="h3"> Quantity: {item.cant}</h3>
+                <button className='btnDelete' onClick={() => deleteFromCart(item.product[0].id)}>
+                  <DeleteIcon className='deleteIcon'/>
                 </button>
               </div>
             );
@@ -83,7 +91,7 @@ function Carrito() {
           justifyContent: 'end',
         }}
       >
-        <p>Total: {numbers}$</p>
+        <p style={{fontWeight:'bolder'}}>Total: {numbers}$</p>
         <button
           className="bought"
           onClick={() => {
@@ -95,6 +103,7 @@ function Carrito() {
           Buy
         </button>
       </div>
+      {showLoader && <LoaderDelete />}
     </div>
   );
 }

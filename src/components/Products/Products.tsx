@@ -7,6 +7,7 @@ import './Products.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import Sidebar from '../Sidebar/Sidebar';
+import LoaderPagination from '../Loader/LoaderPagination/LoaderPagiantion';
 
 const Products = () => {
   const productos = useSelector((state: any) => state.products);
@@ -67,16 +68,35 @@ const Products = () => {
     const totalPages = Math.ceil(totalProducts / productsPerPage);
 
   // Función para manejar el cambio de página
-    const handlePageChange = (page:any) => {
+    /* const handlePageChange = (page:any) => {
     setCurrentPage(page);
-   };
+   }; */
 
   // Obtener los productos correspondientes a la página actual
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  // ...
+
+  // 3. Función para manejar el cambio de página
+  const handlePageChange = (page:any) => {
+    // 2. Mostrar el LoaderPagination
+    setIsLoading(true);
+
+    // Actualizar la página actual
+    setCurrentPage(page);
+
+    // Establecer un temporizador de 3 segundos para ocultar el LoaderPagination
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  };
   
+
+
   return (
     <div>
       <div className="sectionTitleFilter">
@@ -103,13 +123,13 @@ const Products = () => {
           );
         })}
       </div>
-    </div>
-    <div className="pagination">
+      {isLoading && <LoaderPagination />}
+      <div className="pagination">
         {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNum) => (
           <button
-            key={pageNum}
-            className={`pagination-button ${pageNum === currentPage ? "active" : ""}`}
-            onClick={() => handlePageChange(pageNum)}
+          key={pageNum}
+          className={`pagination-button ${pageNum === currentPage ? "active" : ""}`}
+          onClick={() => handlePageChange(pageNum)}
           >
             {pageNum}
           </button>

@@ -12,7 +12,6 @@ const Home = () => {
         <Carrusel/>
         <ShopByCategory/>
         <Searchbar/>
-        
         <Products/>
         
 

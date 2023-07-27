@@ -6,7 +6,6 @@ import LoginIcon from '@mui/icons-material/Login';
 import Stack from '@mui/material/Stack';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useSelector } from 'react-redux'
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Sections from './Sections';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from 'react';
@@ -19,6 +18,8 @@ const NavBar = () => {
    const [show, setShow] = useState(false);
    const handleClose = () => setShow(false);
    const handleShow = () => setShow(true);
+
+
    const {user, isAuthenticated, loginWithRedirect, logout} = useAuth0();
    const [search , setSearch] = useState("")
    const productos = useSelector((state:any) => state.products)
@@ -37,8 +38,10 @@ const NavBar = () => {
   }
   const results = !search ? productos: productos.products.filter((item:any)=> item.name.toLowerCase().includes(search.toLowerCase()))
   
+
+
   return (
-    <div>
+    <div className='navAll'>
       <div className='navbar'>
         <div className='menuHamb'>
 
@@ -69,9 +72,17 @@ const NavBar = () => {
               </div>
             }
           </Stack>
+          
+            <div className='secMobile'>
+              <Sections/>
+
+            </div>
+            
+          
         </Offcanvas.Body>
       </Offcanvas>
         </div>
+
         <div>
           <Link to="/" >
           <img className='logo' src={radtek} alt="" />
@@ -114,11 +125,12 @@ const NavBar = () => {
         </div>
 
         <div className='sectionCart'>
-          <Link to="/cart" className='linkIcon'>
-          <ShoppingCartIcon className='cart'/>
-          <span>{totalCantidad}</span>
-          </Link>
-          <FavoriteIcon className='fav'/>
+          <div style={{marginRight:10}}>
+            <Link to="/cart" className='linkIcon'>
+            <ShoppingCartIcon className='cart'/>
+            <span className='cartNum'>{totalCantidad}</span>
+            </Link>
+          </div>
           <div className='logMenuBar'>
 
           <Stack direction="row" spacing={2}>
@@ -142,7 +154,9 @@ const NavBar = () => {
             </div>
         </div>
       </div>
+      <div className='sect'>
           <Sections/>
+      </div>
     </div>
   )
 }
