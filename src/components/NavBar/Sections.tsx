@@ -1,7 +1,10 @@
 import './Sections.css'
 import { Link } from 'react-router-dom'
 
+
+
 const Sections = () => {
+
   return (
     <div>
             <div className='buttons'>

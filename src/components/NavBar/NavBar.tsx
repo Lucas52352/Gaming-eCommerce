@@ -47,8 +47,8 @@ const NavBar = () => {
       </button>
 
       <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        <Offcanvas.Header style={{backgroundColor: 'gray'}} closeButton>
+          <img className='logoSidebar' src={radtek} alt="" />
         </Offcanvas.Header>
         <Offcanvas.Body className='sideBarMenuHamb'>
             <Stack className='logSidebar' direction="row" spacing={2}>

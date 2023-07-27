@@ -1,33 +1,27 @@
-import './Sidebar.css'
+import './SidebarCategories.css'
 import { useState, useEffect } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import logoHyperx from '../Products/assets/hyperXlogo.png'
-import logitechLogo from '../Products/assets/logoLogitech.png'
-import astroLogo from '../Products/assets/logoAstro.png'
-import redragonLogo from '../Products/assets/logoRedragon.png'
+import logoHyperx from '../../Products/assets/hyperXlogo.png'
+import logitechLogo from '../../Products/assets/logoLogitech.png'
+import astroLogo from '../../Products/assets/logoAstro.png'
+import redragonLogo from '../../Products/assets/logoRedragon.png'
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import logoRadtek from '../NavBar/assets/Radtek1.png'
+import logoRadtek from '../../NavBar/assets/Radtek1.png'
 
 type OnFilterChangeType = (filters: {
-    category: string;
     brand: string;
     color: string;
   }) => void;
 
-const Sidebar = ({ onFilterChange }: { onFilterChange: OnFilterChangeType }) =>  {
+const SidebarCategories = ({ onFilterChange }: { onFilterChange: OnFilterChangeType }) =>  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const [selectedCategory, setSelectedCategory] = useState('All');
+  
     const [selectedBrand, setSelectedBrand] = useState("Allbrands");
     const [selectedColor, setSelectedColor] = useState("AllColors")
 
-    const handleCategoryChange = (event:any) => {
-        const selectedCategory = event.target.value;
-        setSelectedCategory(selectedCategory);
-         // Restablecer la marca seleccionada al cambiar de categoría
-      };
+
     
       const handleBrandChange = (event:any) => {
         const selectedBrand = event.target.value;
@@ -39,15 +33,14 @@ const Sidebar = ({ onFilterChange }: { onFilterChange: OnFilterChangeType }) => 
         const selectedColor = event.target.value;
         setSelectedColor(selectedColor)
       }
-    
 
       useEffect(() => {
         onFilterChange({
-          category: selectedCategory,
           brand: selectedBrand,
           color: selectedColor,
+
         });
-      }, [selectedCategory, selectedBrand, selectedColor]);
+      }, [selectedBrand, selectedColor]);
 
   return (
         <div>
@@ -58,23 +51,11 @@ const Sidebar = ({ onFilterChange }: { onFilterChange: OnFilterChangeType }) => 
       <Offcanvas  show={show} onHide={handleClose}>
         <Offcanvas.Header className='headerSidebar' closeButton>
    
-            <img className='logoSidebar' src={logoRadtek} alt="" />
+            <img className='logoSidebar' src={logoRadtek} alt="Logo" />
             
      
         </Offcanvas.Header>
         <Offcanvas.Body className='sidebar'>
-            <div>
-              <div style={{textAlign:'center'}}>
-                <p style={{fontSize: 24, textAlign:'center'}}>Categories</p>
-                <button className="btnAllCategories" value='All' onClick={handleCategoryChange}>All categories</button>
-              </div>
-                <div className='sectionCategFilter'>
-                  <button className="btnCategories" value='Keyboard' onClick={handleCategoryChange}>Keyboards</button>
-                  <button className="btnCategories" value='Headphones' onClick={handleCategoryChange}>Headphones</button>
-                  <button className="btnCategories" value='Mouse' onClick={handleCategoryChange}>Mouse</button>
-                </div>
-            </div>
-            
             <div>
               <div style={{textAlign:'center'}}>
                 <p style={{fontSize: 24, marginTop: 50}}>Brands</p>
@@ -108,6 +89,7 @@ const Sidebar = ({ onFilterChange }: { onFilterChange: OnFilterChangeType }) => 
             </button>
           </div>
         </div>
+
         <div style={{textAlign:'center'}}>
           <p style={{fontSize: 24, marginTop: 50}}>Colors</p>
           <button value='AllColors' onClick={handleColorChange} className='btnAllcolors'>All Colors</button>
@@ -162,4 +144,4 @@ const Sidebar = ({ onFilterChange }: { onFilterChange: OnFilterChangeType }) => 
   )
 }
 
-export default Sidebar
+export default SidebarCategories
