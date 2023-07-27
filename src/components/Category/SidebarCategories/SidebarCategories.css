@@ -1,0 +1,44 @@
+.btnFilter{
+    background-color: black;
+    color: white;
+    padding: 7px;
+    border-radius: 20px;
+    border: 1px gray;
+    text-align: center;
+}
+
+.sidebar{
+    background-color: black;
+    color: white;
+}
+
+
+.btnAllBands{
+    background-color: black;
+    color: white;
+    border: none;
+    border: solid 1px white;
+    border-radius: 50px;
+    padding: 7px;
+}
+
+.btnAllcolors{
+    background-color: black;
+    color: white;
+    border: solid 1px white;
+    border-radius: 50px;
+    padding: 7px;
+    margin: 30px;
+
+}
+
+
+.headerSidebar{
+    background-color: grey;
+}
+
+.logoSidebar{
+    width: 150px;
+    margin: auto;
+    
+}

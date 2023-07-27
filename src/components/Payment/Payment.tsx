@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement } from '@stripe/react-stripe-js'
 import "./Payment.css"

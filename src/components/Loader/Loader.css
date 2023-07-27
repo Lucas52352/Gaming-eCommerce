@@ -1,0 +1,19 @@
+/* Loader.css */
+
+.divLoader {
+  position: fixed;
+  width:100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  z-index: 1;
+}
+
+.loaderAnimation {
+  width: 200px; 
+  height: 200px;
+
+}
+

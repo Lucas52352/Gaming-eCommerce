@@ -2,11 +2,11 @@ import { useState} from "react"
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProd } from '../../redux/ProductsActions'
-import Card from '../Cards/Card'
-import './Products.css'
 import { useAuth0 } from '@auth0/auth0-react'
+import Card from '../Cards/Card'
 import axios from "axios"
 import Sidebar from "../Sidebar/Sidebar"
+import './Products.css'
 
 const Products = () => {
   const productos = useSelector((state:any) => state.products)
