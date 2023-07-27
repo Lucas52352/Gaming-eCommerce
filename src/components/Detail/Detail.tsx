@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { cleanState, getProdtById } from '../../redux/ProductsActions';
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { cleanState, getProdtById } from '../../redux/ProductsActions'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Detail.css';
 import Swal from 'sweetalert2';
 import { pushCartProd } from '../../redux/CartActions';
 import { useAuth0 } from '@auth0/auth0-react';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import img from '../NavBar/assets/Radtek1.png';
+import img from "../NavBar/assets/Radtek1.png";
+import Box from '@mui/material/Box';
 
 const style = {
   position: 'absolute',

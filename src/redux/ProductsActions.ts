@@ -22,6 +22,7 @@ export const getProdtById = (id: number) => async (dispatch: any) => {
 }
 
 
+
 export const cleanState = ()=>  async (dispatch: any)=>{
       dispatch(clear());
 }
