@@ -6,10 +6,9 @@
     justify-content: space-around;
     align-items: center;
     height:150px;
-    /* position: fixed;
-    z-index: 10;
-    width: 100%; */
 }
+
+
 
 .logo{
     width: 150px;
@@ -146,6 +145,19 @@ span{
     display: none;
 }
 
+.cartNum{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: red;
+    border-radius: 100px;
+    margin-right:10px;
+    font-weight: bolder;
+}
+
+
+
 
 @media(max-width:1080px){
     .menuHamb{
@@ -172,5 +184,24 @@ span{
     .navbar{
         justify-content: space-evenly;
     }
+
+    .buttons{
+        display: none;
+    }
+
+    .secMobile .buttons{
+        flex-direction: column;
+    }
     
 }
+
+
+@media(max-width:384px){
+    .buttons{
+        flex-direction: column;
+    }
+    .sect{
+        display: none;
+    }
+}
+

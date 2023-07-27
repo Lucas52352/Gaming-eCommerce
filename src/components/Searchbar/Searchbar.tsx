@@ -20,7 +20,7 @@ const Searchbar = () => {
     <div className='sectionSarchbarMobile'>
         <div className="searchContainerMobile">
             <div className='sectionSearchBarMobile'>
-                <div style={{marginTop:50}}>
+                <div style={{marginTop:50, display:'flex', justifyContent: 'center', alignItems:'center'}}>
                     <input value={search} onChange={searcher} placeholder='Search...' className='searchMobile' type="search" />
                     <SearchIcon className='searchIconMobile'/>
                 </div>
