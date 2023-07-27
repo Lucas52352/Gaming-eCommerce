@@ -57,16 +57,39 @@ const Products = () => {
     return isCategoryMatch && isBrandMatch && isColorMatch;
   });
 
+
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 7;
+
+  // Calcular la cantidad total de páginas necesarias
+    const totalProducts = filteredProducts.length;
+    const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+  // Función para manejar el cambio de página
+    const handlePageChange = (page:any) => {
+    setCurrentPage(page);
+   };
+
+  // Obtener los productos correspondientes a la página actual
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  
   return (
     <div>
       <div className="sectionTitleFilter">
         <h5 className="titleAllProd">All Products</h5>
         <Sidebar onFilterChange={handleFilterChange} />
       </div>
-      <div className="sectionCards">
-        {filteredProducts.map((prod: any) => {
-          return (
-            <Card
+
+    <div className='sectionCards'>
+      
+       {
+        currentProducts.map((prod:any) => {
+          return(
+            <Card 
               key={prod.id}
               id={prod.id}
               name={prod.name}
@@ -81,7 +104,20 @@ const Products = () => {
         })}
       </div>
     </div>
-  );
-};
+    <div className="pagination">
+        {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNum) => (
+          <button
+            key={pageNum}
+            className={`pagination-button ${pageNum === currentPage ? "active" : ""}`}
+            onClick={() => handlePageChange(pageNum)}
+          >
+            {pageNum}
+          </button>
+        ))}
+      </div>
+          </div>
+  )
+}
+
 
 export default Products;
