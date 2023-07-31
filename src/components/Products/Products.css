@@ -104,6 +104,26 @@
     color: white;
 }
 
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
+.pagination-button{
+    background-color: #000000; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 8px 16px; /* Espaciado interior del botón */
+    margin: 4px; /* Margen entre botones */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse sobre el botón */
+    border-radius: 10px;
+}
+
+.pagination-button.active {
+    background-color: #ff0000; /* Cambiar el color de fondo del botón activo */
+  }
+
 @media(max-width:527px){
     .sectionTitleFilter{
         flex-direction: column;

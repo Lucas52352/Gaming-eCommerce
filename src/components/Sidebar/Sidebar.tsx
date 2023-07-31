@@ -1,11 +1,10 @@
 import './Sidebar.css';
 import { useState, useEffect } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { useSelector } from 'react-redux';
-import logoHyperx from '../Products/assets/hyperXlogo.png';
-import logitechLogo from '../Products/assets/logoLogitech.png';
-import astroLogo from '../Products/assets/logoAstro.png';
-import redragonLogo from '../Products/assets/logoRedragon.png';
+import logoHyperx from '../Products/assets/hyperXlogo.png'
+import logitechLogo from '../Products/assets/logoLogitech.png'
+import astroLogo from '../Products/assets/logoAstro.png'
+import redragonLogo from '../Products/assets/logoRedragon.png'
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import logoRadtek from '../NavBar/assets/Radtek1.png';
 
@@ -20,40 +19,35 @@ const Sidebar = ({ onFilterChange }: { onFilterChange: OnFilterChangeType }) => 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedBrand, setSelectedBrand] = useState('Allbrands');
-  const [selectedColor, setSelectedColor] = useState('AllColors');
-  const productos = useSelector((state: any) => state.products);
+    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [selectedBrand, setSelectedBrand] = useState("Allbrands");
+    const [selectedColor, setSelectedColor] = useState("AllColors")
 
-  const handleCategoryChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
-    const selectedCategory = event.target.value;
-    setSelectedCategory(selectedCategory);
-    onFilterChange({
-      category: selectedCategory,
-      brand: selectedBrand,
-      color: selectedColor,
-    });
-  };
+    const handleCategoryChange = (event:any) => {
+        const selectedCategory = event.target.value;
+        setSelectedCategory(selectedCategory);
+         // Restablecer la marca seleccionada al cambiar de categoría
+      };
+    
+      const handleBrandChange = (event:any) => {
+        const selectedBrand = event.target.value;
+        console.log(selectedBrand);
+        setSelectedBrand(selectedBrand); // Actualizar la marca seleccionada
+      };
+  
+      const handleColorChange = (event:any) => {
+        const selectedColor = event.target.value;
+        setSelectedColor(selectedColor)
+      }
+    
 
-  const handleBrandChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
-    const selectedBrand = event.target.value;
-    setSelectedBrand(selectedBrand);
-    onFilterChange({
-      category: selectedCategory,
-      brand: selectedBrand,
-      color: selectedColor,
-    });
-  };
-
-  const handleColorChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
-    const selectedColor = event.target.value;
-    setSelectedColor(selectedColor);
-    onFilterChange({
-      category: selectedCategory,
-      brand: selectedBrand,
-      color: selectedColor,
-    });
-  };
+      useEffect(() => {
+        onFilterChange({
+          category: selectedCategory,
+          brand: selectedBrand,
+          color: selectedColor,
+        });
+      }, [selectedCategory, selectedBrand, selectedColor]);
 
   return (
     <div>
