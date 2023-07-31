@@ -94,7 +94,7 @@ const Detail = () => {
       }
   
       localStorage.setItem('carrito', JSON.stringify(product));
-      dispatch(pushCartProd(prodById, cantidad));
+      dispatch(pushCartProd(prodById, +cantidad));
     }
   };
   

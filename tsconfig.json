@@ -24,6 +24,6 @@
     "noImplicitThis": true,
     "strictNullChecks": true
   },
-  "include": ["src"],
+  "include": ["src", "emails"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

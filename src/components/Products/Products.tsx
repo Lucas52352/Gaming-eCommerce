@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProd } from "../../redux/ProductsActions";
+import Card from "../Cards/Card";
+import "./Products.css";
+import { User, useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
+import Sidebar from "../Sidebar/Sidebar";
+import { Dispatch } from "@reduxjs/toolkit";
+
+=======
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,29 +20,41 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import Sidebar from '../Sidebar/Sidebar';
 import LoaderPagination from '../Loader/LoaderPagination/LoaderPagiantion';
+>>>>>>> developer
 
 interface UserNext{
   name: string,
   email:string,
   picture:string | undefined,
 }
+<<<<<<< HEAD
+
+const Products = () => {
+  const productos = useSelector((state:any) => state.products);
+  const dispatch: Dispatch<any> = useDispatch();
+  const { logout, user } = useAuth0();
+=======
 
 
 const Products = () => {
   const productos = useSelector((state: any) => state.products);
+>>>>>>> developer
 
   const [selectedFilters, setSelectedFilters] = useState({
-    category: 'All',
-    brand: 'Allbrands',
-    color: 'AllColors',
+    category: "All",
+    brand: "Allbrands",
+    color: "AllColors",
   });
 
   const handleFilterChange = (filters: any) => {
     setSelectedFilters(filters);
   };
 
+<<<<<<< HEAD
+=======
   const dispatch: any = useDispatch();
   const { logout, user } = useAuth0();
+>>>>>>> developer
   const [userNext, setUserNext] = useState<UserNext>({
     name: "",
     email: "",
@@ -65,6 +89,20 @@ const Products = () => {
     }
   }, [userNext]);
   console.log(userNext);
+<<<<<<< HEAD
+  
+  // Filtrar los productos en función de la categoría, marca y color seleccionados
+  const filteredProducts = productos.products.filter((prod:any) => {
+    const isCategoryMatch =
+      selectedFilters.category === "All" || prod.category === selectedFilters.category;
+    const isBrandMatch =
+      selectedFilters.brand === "Allbrands" || prod.brand === selectedFilters.brand;
+    const isColorMatch =
+      selectedFilters.color === "AllColors" || prod.color === selectedFilters.color;
+    return isCategoryMatch && isBrandMatch && isColorMatch;
+  });
+
+=======
   // Filtrar los productos en función de la categoría y marca seleccionada
   const filteredProducts = productos.products.filter((prod: any) => {
     const isCategoryMatch =
@@ -118,12 +156,35 @@ const Products = () => {
   
 
 
+>>>>>>> developer
   return (
     <div>
       <div className="sectionTitleFilter">
         <h5 className="titleAllProd">All Products</h5>
         <Sidebar onFilterChange={handleFilterChange} />
       </div>
+<<<<<<< HEAD
+      <div className="sectionCards">
+        {filteredProducts.map((prod:any) => (
+          <Card
+            key={prod.id}
+            id={prod.id}
+            name={prod.name}
+            image={prod.image}
+            description={prod.description}
+            price={prod.price}
+            category={prod.category}
+            color={prod.color}
+            brand={prod.brand}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Products;
+=======
 
     <div className='sectionCards'>
       
@@ -163,3 +224,4 @@ const Products = () => {
 
 
 export default Products;
+>>>>>>> developer
