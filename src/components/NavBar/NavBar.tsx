@@ -61,7 +61,10 @@ const NavBar = () => {
               <div>
 
               <img src={user?.picture} alt="" id='logoPerfil'/>
-              <button onClick={()=> logout()} className='logoutBtn'>
+              <button onClick={()=>{
+                logout()
+                localStorage.clear()
+              }} className='logoutBtn'>
               <LoginIcon className='logout'/>
               </button>
               </div>
