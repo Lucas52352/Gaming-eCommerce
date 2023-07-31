@@ -84,7 +84,7 @@ const Detail = () => {
   
   const addProd = ()=>{
   if(prodById){
-    dispatch(pushCartProd(prodById, cantidad))
+    dispatch(pushCartProd(prodById, +cantidad))
   }
   }
   const cant = (event:any)=>{
