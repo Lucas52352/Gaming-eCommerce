@@ -13,6 +13,7 @@ interface CardProps {
   description: string;
   brand: string;
   category: string;
+  stock:number
 }
 
 const Cards = ({ id, name, image, price}: CardProps) => {
@@ -33,7 +34,7 @@ const Cards = ({ id, name, image, price}: CardProps) => {
   return (
     <div className='card' key={id}>
       <div className='link' onClick={handleCardClick}>
-        <img className="imgCard" src={image} alt="" />
+        <img className="imgCard" src={image} alt={name} />
         <div className='sectionText'>
           <p className='textCard'>{name}</p>
           <hr />

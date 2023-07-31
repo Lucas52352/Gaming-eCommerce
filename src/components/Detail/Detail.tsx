@@ -37,6 +37,9 @@ const Detail = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const local = JSON.parse(localStorage.getItem('carrito'))
+
   interface Num {
     cantidad: number;
   }
@@ -79,9 +82,22 @@ const Detail = () => {
 
   const addProd = () => {
     if (prodById) {
+      const newProduct = { prodById, cantidad };
+      let product = [];
+  
+      if (local === null) {
+        // Si no hay datos en el local storage, crea un nuevo array con el nuevo objeto
+        product = [newProduct];
+      } else {
+        // Si hay datos en el local storage, agrega el nuevo objeto al array existente
+        product = [...local, newProduct];
+      }
+  
+      localStorage.setItem('carrito', JSON.stringify(product));
       dispatch(pushCartProd(prodById, cantidad));
     }
   };
+  
   const cant = (event: any) => {
     setCantidad(event.target.value);
   };

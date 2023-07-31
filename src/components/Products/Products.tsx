@@ -9,6 +9,13 @@ import axios from 'axios';
 import Sidebar from '../Sidebar/Sidebar';
 import LoaderPagination from '../Loader/LoaderPagination/LoaderPagiantion';
 
+interface UserNext{
+  name: string,
+  email:string,
+  picture:string | undefined,
+}
+
+
 const Products = () => {
   const productos = useSelector((state: any) => state.products);
 
@@ -24,26 +31,40 @@ const Products = () => {
 
   const dispatch: any = useDispatch();
   const { logout, user } = useAuth0();
-  const [userNext, setUserNext] = useState({
-    name: '',
-    email: '',
+  const [userNext, setUserNext] = useState<UserNext>({
+    name: "",
+    email: "",
+    picture:""
   });
+
+  const response = () => {
+    return axios.post("http://localhost:3001/user/", {
+      name: userNext.name,
+      email: userNext.email,
+      picture: userNext.picture
+    });
+  };
+
+  useEffect(() => {
+    dispatch(getProd());
+  }, [dispatch]);
+
   useEffect(() => {
     if (user?.name && user?.email) {
       setUserNext({
-        ...userNext,
         name: user.name,
         email: user.email,
+        picture: user.picture
       });
     }
-    dispatch(getProd());
-    response();
   }, [user]);
 
-  const response = () => {
-    return axios.post('http://localhost:3001/user', userNext);
-  };
-
+  useEffect(() => {
+    if (userNext.name && userNext.email) {
+      response();
+    }
+  }, [userNext]);
+  console.log(userNext);
   // Filtrar los productos en función de la categoría y marca seleccionada
   const filteredProducts = productos.products.filter((prod: any) => {
     const isCategoryMatch =
@@ -119,6 +140,7 @@ const Products = () => {
               category={prod.category}
               color={prod.color}
               brand={prod.brand}
+              stock={prod.stock}
             />
           );
         })}

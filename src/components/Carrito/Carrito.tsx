@@ -8,20 +8,37 @@ import { Dispatch } from '@reduxjs/toolkit';
 import LoaderDelete from '../Loader/LoaderDelete/LoaderDelete'
 import { useState } from 'react';
 
+interface Carrito{
+  producto: object,
+  cantidad: number
+}
+
 function Carrito() {
   const navigate = useNavigate();
   const dispatch: Dispatch<any> = useDispatch();
+
+  const [cartObj, setCartObj] = useState<Carrito>({
+    producto:{},
+    cantidad: 0
+  })
   const cart = useSelector((state: any) => state.cart.cartProducts);
   const total = cart.map((item: any) => item.product);
   const [showLoader, setShowLoader] = useState(false);
   console.log(cart, 'CART');
-  
+  const allCart = localStorage.getItem("carrito");
+  const allCartJSON = JSON.parse(allCart)
+
+  console.log(allCartJSON, "PUSHLOCAL")
+
+
 
   const totally = total.map((item: any) => {
     return item.map((itemBi: any) => {
       return itemBi.price;
     });
   });
+  
+  
   let numbers = 0;
   for (let i = 0; i < totally.length; i++) {
     const element = totally[i];
@@ -29,6 +46,19 @@ function Carrito() {
       numbers += Math.floor(element[0]);
     }
   }
+
+    // const carrito = [];  
+    // for(let iterador of allCartJSON){
+    //   // console.log("soy el carritooooo jueputa",iterador)
+    //   if(iterador.prodById && iterador.cantidad){
+    //     console.log(iterador.prodById)
+    //     carrito.push({
+    //       "prodById":iterador.prodById,
+    //       "cantidad":iterador.cantidad
+    //     })
+    //   }
+    // }
+
 
 
   const idProd = total.map((prod: any) => prod[0].id)
