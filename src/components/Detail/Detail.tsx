@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { cleanState, getProdtById } from '../../redux/ProductsActions'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { cleanState, getProdtById } from '../../redux/ProductsActions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Detail.css';
 import Swal from 'sweetalert2';
@@ -9,7 +9,7 @@ import { pushCartProd } from '../../redux/CartActions';
 import { useAuth0 } from '@auth0/auth0-react';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import img from "../NavBar/assets/Radtek1.png";
+import img from '../NavBar/assets/Radtek1.png';
 import Box from '@mui/material/Box';
 
 const style = {
@@ -38,7 +38,7 @@ const Detail = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const local = JSON.parse(localStorage.getItem('carrito'))
+  const local: any = JSON.parse(localStorage.getItem('carrito'));
 
   interface Num {
     cantidad: number;
@@ -84,7 +84,7 @@ const Detail = () => {
     if (prodById) {
       const newProduct = { prodById, cantidad };
       let product = [];
-  
+
       if (local === null) {
         // Si no hay datos en el local storage, crea un nuevo array con el nuevo objeto
         product = [newProduct];
@@ -92,12 +92,12 @@ const Detail = () => {
         // Si hay datos en el local storage, agrega el nuevo objeto al array existente
         product = [...local, newProduct];
       }
-  
+
       localStorage.setItem('carrito', JSON.stringify(product));
       dispatch(pushCartProd(prodById, +cantidad));
     }
   };
-  
+
   const cant = (event: any) => {
     setCantidad(event.target.value);
   };
@@ -118,27 +118,27 @@ const Detail = () => {
             <div key={item.id}>
               {' '}
               {/* Agregamos un key único al div */}
-              <section className="py-5">
-                <div className="container px-4 px-lg-5 my-5">
-                  <div className="row gx-4 gx-lg-5 align-items-center">
-                    <div className="col-md-6">
+              <section className='py-5'>
+                <div className='container px-4 px-lg-5 my-5'>
+                  <div className='row gx-4 gx-lg-5 align-items-center'>
+                    <div className='col-md-6'>
                       <img
-                        className="card-img-top mb-5 mb-md-0"
+                        className='card-img-top mb-5 mb-md-0'
                         src={item.image}
-                        alt="..."
+                        alt='...'
                       />
                     </div>
-                    <div className="col-md-6">
-                      <small className="mb-1">SKU: BST-498</small>
-                      <h1 className="display-5 fw-bolder">{item.name}</h1>
-                      <p className="fs-5 mb-5">
-                        <span className="text-decoration-line-through">
+                    <div className='col-md-6'>
+                      <small className='mb-1'>SKU: BST-498</small>
+                      <h1 className='display-5 fw-bolder'>{item.name}</h1>
+                      <p className='fs-5 mb-5'>
+                        <span className='text-decoration-line-through'>
                           ${item.price}
                         </span>
                         <span> $60.00</span>
                       </p>
-                      <p className="lead">{item.description}</p>
-                      <div className="d-flex">
+                      <p className='lead'>{item.description}</p>
+                      <div className='d-flex'>
                         <>
                           {ids.find((id: any) => id === item.id) ? (
                             <p style={{ color: 'green' }}>
@@ -147,8 +147,8 @@ const Detail = () => {
                           ) : (
                             <>
                               <button
-                                className="btn btn-outline-dark flex-shrink-0 btn"
-                                type="button"
+                                className='btn btn-outline-dark flex-shrink-0 btn'
+                                type='button'
                                 onClick={() => {
                                   if (isAuthenticated) {
                                     Swal.fire({
@@ -165,14 +165,14 @@ const Detail = () => {
                                   }
                                 }}
                               >
-                                <i className="bi-cart-fill me-1" />
+                                <i className='bi-cart-fill me-1' />
                                 Add to cart
                               </button>
                               <input
-                                id="inputQuantity"
-                                className="form-control text-center me-3"
-                                type="number"
-                                defaultValue="0"
+                                id='inputQuantity'
+                                className='form-control text-center me-3'
+                                type='number'
+                                defaultValue='0'
                                 style={{ maxWidth: '9rem', padding: '20px' }}
                                 onChange={cant}
                               />
@@ -184,10 +184,10 @@ const Detail = () => {
                   </div>
                 </div>
               </section>
-              <section className="py-5 bg-light">
-                <div className="container px-4 px-lg-5 mt-5">
-                  <h2 className="fw-bolder mb-4">Related products</h2>
-                  <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+              <section className='py-5 bg-light'>
+                <div className='container px-4 px-lg-5 mt-5'>
+                  <h2 className='fw-bolder mb-4'>Related products</h2>
+                  <div className='row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center'>
                     {/* ...Contenido de productos relacionados... */}
                   </div>
                 </div>
@@ -200,27 +200,27 @@ const Detail = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
       >
         <Box sx={style}>
           <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
+            id='modal-modal-title'
+            variant='h6'
+            component='h2'
             sx={typographyStyle}
           >
-            <img src={img} alt="" className="modalImg" />
-            <h2 className="pModal">
+            <img src={img} alt='' className='modalImg' />
+            <h2 className='pModal'>
               Please, before continuing, please log in.
             </h2>
             <hr />
           </Typography>
-          <Typography id="modal-modal-description" sx={typographyStyle}>
-            <button className="btnModal" onClick={() => loginWithRedirect()}>
+          <Typography id='modal-modal-description' sx={typographyStyle}>
+            <button className='btnModal' onClick={() => loginWithRedirect()}>
               Log In
             </button>
-            <button className="btnModal" onClick={() => loginWithRedirect()}>
+            <button className='btnModal' onClick={() => loginWithRedirect()}>
               Register
             </button>
           </Typography>

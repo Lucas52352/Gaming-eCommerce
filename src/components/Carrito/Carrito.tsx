@@ -5,12 +5,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 // import deleteBlack from './assets/deleteBlack.png'
 import { removeCartProd } from '../../redux/CartActions';
 import { Dispatch } from '@reduxjs/toolkit';
-import LoaderDelete from '../Loader/LoaderDelete/LoaderDelete'
+import LoaderDelete from '../Loader/LoaderDelete/LoaderDelete';
 import { useState } from 'react';
 
-interface Carrito{
-  producto: object,
-  cantidad: number
+interface Carrito {
+  producto: object;
+  cantidad: number;
 }
 
 function Carrito() {
@@ -18,27 +18,25 @@ function Carrito() {
   const dispatch: Dispatch<any> = useDispatch();
 
   const [cartObj, setCartObj] = useState<Carrito>({
-    producto:{},
-    cantidad: 0
-  })
+    producto: {},
+    cantidad: 0,
+  });
+
   const cart = useSelector((state: any) => state.cart.cartProducts);
   const total = cart.map((item: any) => item.product);
   const [showLoader, setShowLoader] = useState(false);
   console.log(cart, 'CART');
-  const allCart = localStorage.getItem("carrito");
-  const allCartJSON = JSON.parse(allCart)
+  const allCart: any = localStorage.getItem('carrito');
+  const allCartJSON = JSON.parse(allCart);
 
-  console.log(allCartJSON, "PUSHLOCAL")
-
-
+  console.log(allCartJSON, 'PUSHLOCAL');
 
   const totally = total.map((item: any) => {
     return item.map((itemBi: any) => {
       return itemBi.price;
     });
   });
-  
-  
+
   let numbers = 0;
   for (let i = 0; i < totally.length; i++) {
     const element = totally[i];
@@ -47,62 +45,61 @@ function Carrito() {
     }
   }
 
-    // const carrito = [];  
-    // for(let iterador of allCartJSON){
-    //   // console.log("soy el carritooooo jueputa",iterador)
-    //   if(iterador.prodById && iterador.cantidad){
-    //     console.log(iterador.prodById)
-    //     carrito.push({
-    //       "prodById":iterador.prodById,
-    //       "cantidad":iterador.cantidad
-    //     })
-    //   }
-    // }
+  // const carrito = [];
+  // for(let iterador of allCartJSON){
+  //   // console.log("soy el carritooooo jueputa",iterador)
+  //   if(iterador.prodById && iterador.cantidad){
+  //     console.log(iterador.prodById)
+  //     carrito.push({
+  //       "prodById":iterador.prodById,
+  //       "cantidad":iterador.cantidad
+  //     })
+  //   }
+  // }
 
-
-
-  const idProd = total.map((prod: any) => prod[0].id)
+  const idProd = total.map((prod: any) => prod[0].id);
   console.log(idProd, 'ID de productos');
-  
+
   const deleteFromCart = (id: any) => {
     console.log(id);
     setShowLoader(true);
 
-    dispatch(removeCartProd(id))
+    dispatch(removeCartProd(id));
 
     setTimeout(() => {
       setShowLoader(false);
     }, 3000);
-    
   };
 
   return (
-    <div className="carContainer">
+    <div className='carContainer'>
       <hr />
       {cart ? (
-        <div className="cartAllContainer">
-          {cart.map((item: any) => {
+        <div className='cartAllContainer'>
+          {allCartJSON?.map((item: any) => {
             return (
-              <div className="div">
-                {item.product.map((item: any) => {
+              <div className='div'>
+                {item.prodById.map((item: any) => {
                   return (
-                    <div className="cartContainer">
+                    <div className='cartContainer'>
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="imageCart"
+                        className='imageCart'
                       />
-                      <div className="cartInfo">
-                        <h3 id="h3">{item.name}</h3>
+                      <div className='cartInfo'>
+                        <h3 id='h3'>{item.name}</h3>
                       </div>
-                      <h4 id="h3">${item.price}</h4>
-
+                      <h4 id='h3'>${item.price}</h4>
                     </div>
                   );
                 })}
-                <h3 id="h3"> Quantity: {item.cant}</h3>
-                <button className='btnDelete' onClick={() => deleteFromCart(item.product[0].id)}>
-                  <DeleteIcon className='deleteIcon'/>
+                <h3 id='h3'> Quantity: {item.cantidad}</h3>
+                <button
+                  className='btnDelete'
+                  onClick={() => deleteFromCart(item.product[0].id)}
+                >
+                  <DeleteIcon className='deleteIcon' />
                 </button>
               </div>
             );
@@ -121,9 +118,9 @@ function Carrito() {
           justifyContent: 'end',
         }}
       >
-        <p style={{fontWeight:'bolder'}}>Total: {numbers}$</p>
+        <p style={{ fontWeight: 'bolder' }}>Total: {numbers}$</p>
         <button
-          className="bought"
+          className='bought'
           onClick={() => {
             if (cart.length > 0) {
               navigate('/payments');
