@@ -14,7 +14,7 @@ function Payment() {
     adress: '',
     postal: 0,
   });
-  const { user } = useAuth0();
+  const { user }: any = useAuth0();
   const [dataUser, setDataUser] = useState<DataUser>({
     id: 0,
     name: '',
@@ -24,7 +24,12 @@ function Payment() {
     updatedAt: '',
   });
 
-  const email = user?.email;
+  const email: string = user?.email;
+
+  const local = JSON.parse(localStorage.getItem('carrito'));
+
+  const idProds: number[] = [];
+  local.forEach((element: any) => idProds.push(element.prodById[0].id));
 
   interface DataUser {
     id: number;
@@ -37,7 +42,7 @@ function Payment() {
 
   useEffect(() => {
     getDataUser();
-  }, []);
+  }, [email]);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -48,17 +53,23 @@ function Payment() {
       return prod.price * item.cant;
     });
   });
+  const correo: any = { email: email };
+  console.log(correo, 'CORREO');
 
   const getDataUser = async () => {
-    const response = await axios.get('http://localhost:3001/user/email');
+    const response = await axios.post(
+      `http://localhost:3001/user/email`,
+      correo
+    );
+    console.log(response.data);
     setDataUser(response.data);
-    console.log(response);
   };
 
-  // const buyProduct = async() => {
-  //   //postProduct
-  //   const response = await axios.post()
-  // }
+  const buyProduct = async () => {
+    await axios.post(`http://localhost:3001/history/create/${dataUser.id}`, {
+      id: idProds,
+    });
+  };
 
   const handleValue = (event: any) => {
     const { name, value } = event.target;
@@ -164,7 +175,9 @@ function Payment() {
           />
           <hr className='white' />
         </div>
-        <button className='buyBtn'>BUY</button>
+        <button className='buyBtn' onClick={buyProduct}>
+          BUY
+        </button>
       </form>
       <div>
         {cart ? (

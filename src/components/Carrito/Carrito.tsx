@@ -122,7 +122,7 @@ function Carrito() {
         <button
           className='bought'
           onClick={() => {
-            if (cart.length > 0) {
+            if (allCartJSON.length > 0) {
               navigate('/payments');
             }
           }}

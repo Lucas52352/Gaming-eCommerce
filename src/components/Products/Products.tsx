@@ -12,7 +12,6 @@ import LoaderPagination from '../Loader/LoaderPagination/LoaderPagiantion';
 interface UserNext {
   name: string;
   email: string;
-  picture: string | undefined;
 }
 
 const Products = () => {
@@ -33,14 +32,12 @@ const Products = () => {
   const [userNext, setUserNext] = useState<UserNext>({
     name: '',
     email: '',
-    picture: '',
   });
 
   const response = () => {
     return axios.post('http://localhost:3001/user', {
       name: userNext.name,
       email: userNext.email,
-      picture: userNext.picture,
     });
   };
 
@@ -53,17 +50,13 @@ const Products = () => {
       setUserNext({
         name: user.name,
         email: user.email,
-        picture: user.picture,
       });
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
-    return () => {
-      response();
-    };
+    response();
   }, [userNext]);
-  console.log(userNext);
   // Filtrar los productos en función de la categoría y marca seleccionada
   const filteredProducts = productos.products.filter((prod: any) => {
     const isCategoryMatch =
