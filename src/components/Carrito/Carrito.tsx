@@ -17,51 +17,42 @@ function Carrito() {
   const navigate = useNavigate();
   const dispatch: Dispatch<any> = useDispatch();
 
-  const [cartObj, setCartObj] = useState<Carrito>({
-    producto: {},
-    cantidad: 0,
-  });
-
   const cart = useSelector((state: any) => state.cart.cartProducts);
   const total = cart.map((item: any) => item.product);
   const [showLoader, setShowLoader] = useState(false);
-  console.log(cart, 'CART');
+
+  
   const allCart: any = localStorage.getItem('carrito');
+  
   const allCartJSON = JSON.parse(allCart);
-
-  console.log(allCartJSON, 'PUSHLOCAL');
-
+   
+  
+  
   const totally = total.map((item: any) => {
     return item.map((itemBi: any) => {
       return itemBi.price;
     });
   });
 
+
   let numbers = 0;
-  for (let i = 0; i < totally.length; i++) {
+  if(cart){
+    for (let i = 0; i < totally.length; i++) {
     const element = totally[i];
     if (element[0]) {
       numbers += Math.floor(element[0]);
     }
   }
+}else{
+  numbers += 100
+}
 
-  // const carrito = [];
-  // for(let iterador of allCartJSON){
-  //   // console.log("soy el carritooooo jueputa",iterador)
-  //   if(iterador.prodById && iterador.cantidad){
-  //     console.log(iterador.prodById)
-  //     carrito.push({
-  //       "prodById":iterador.prodById,
-  //       "cantidad":iterador.cantidad
-  //     })
-  //   }
-  // }
+console.log(cart);
 
-  const idProd = total.map((prod: any) => prod[0].id);
-  console.log(idProd, 'ID de productos');
+  console.log(allCartJSON, 'PRODJSON');
+  console.log(cart, 'productos de carrito');
 
   const deleteFromCart = (id: any) => {
-    console.log(id);
     setShowLoader(true);
 
     dispatch(removeCartProd(id));
@@ -73,37 +64,59 @@ function Carrito() {
 
   return (
     <div className='carContainer'>
-      <hr />
+      <hr />{
+        cart > 0
+        ?
+        <div>
+          {
+            cart?.map((item:any)=>{
+              if(item.product){
+                return item.product.map((prod:any)=>{
+                  return(
+                    <>
+                    <h2>{prod.name}</h2>
+                    </>
+                  )
+                })
+              }
+            })
+          }
+        </div>
+        :
+        <div>
+        {allCartJSON?.map((items: any) => {
+          return (
+            <div className='div'>
+              {items.prodById.map((item: any) => {
+                return (
+                  <div className='cartContainer'>
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className='imageCart'
+                      />
+                    <div className='cartInfo'>
+                      <h3 id='h3'>{item.name}</h3>
+                    </div>
+                    <h4 id='h3'>${item.price * items.cantidad}</h4>
+                  </div>
+                );
+              })}
+              <h3 id='h3'> Quantity: {items.cantidad}</h3>
+              <button
+                className='btnDelete'
+                onClick={() => deleteFromCart(items.product[0].id)}
+                >
+                <DeleteIcon className='deleteIcon' />
+              </button>
+            </div>
+          );
+        })}
+        </div>
+      }
       {cart ? (
         <div className='cartAllContainer'>
-          {allCartJSON?.map((item: any) => {
-            return (
-              <div className='div'>
-                {item.prodById.map((item: any) => {
-                  return (
-                    <div className='cartContainer'>
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className='imageCart'
-                      />
-                      <div className='cartInfo'>
-                        <h3 id='h3'>{item.name}</h3>
-                      </div>
-                      <h4 id='h3'>${item.price}</h4>
-                    </div>
-                  );
-                })}
-                <h3 id='h3'> Quantity: {item.cantidad}</h3>
-                <button
-                  className='btnDelete'
-                  onClick={() => deleteFromCart(item.product[0].id)}
-                >
-                  <DeleteIcon className='deleteIcon' />
-                </button>
-              </div>
-            );
-          })}
+        
         </div>
       ) : (
         <h1>Empty Cart...........</h1>

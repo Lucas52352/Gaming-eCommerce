@@ -56,6 +56,9 @@ const Detail = () => {
   //LOGICA CARRITO +
 
   let ids: Array<Number> = [];
+
+  console.log(ids,"AIDIS");
+  
   //ESTADO OBJETO CON EL PRODUCTO DEL DETALLE
   const prodById = useSelector((state: any) => state.products.productById);
 
@@ -67,7 +70,6 @@ const Detail = () => {
   const cart = useSelector((state: any) => state.cart.cartProducts);
   //
 
-  console.log(cart, 'CARRITO');
 
   //product carrito
   cart?.map((item: any) => {
@@ -79,7 +81,13 @@ const Detail = () => {
       });
     }
   });
-
+  const allCart: any = localStorage.getItem('carrito');
+  const allCartJSON = JSON.parse(allCart);
+   
+  const idisJson = allCartJSON?.map((item:any)=>{
+    return item.prodById?.map((prod:any)=> prod.id)
+  })
+  
   const addProd = () => {
     if (prodById) {
       const newProduct = { prodById, cantidad };
@@ -116,8 +124,6 @@ const Detail = () => {
         prodById.map((item: any) => {
           return (
             <div key={item.id}>
-              {' '}
-              {/* Agregamos un key único al div */}
               <section className='py-5'>
                 <div className='container px-4 px-lg-5 my-5'>
                   <div className='row gx-4 gx-lg-5 align-items-center'>
@@ -132,15 +138,16 @@ const Detail = () => {
                       <small className='mb-1'>SKU: BST-498</small>
                       <h1 className='display-5 fw-bolder'>{item.name}</h1>
                       <p className='fs-5 mb-5'>
-                        <span className='text-decoration-line-through'>
+                        <span className='text-decoration-line-through' style={{color:"black"}}>
                           ${item.price}
                         </span>
-                        <span> $60.00</span>
+                        <span style={{color:"black"}}> {item.price - 2000}</span>
                       </p>
                       <p className='lead'>{item.description}</p>
                       <div className='d-flex'>
                         <>
-                          {ids.find((id: any) => id === item.id) ? (
+                          {
+                          ids?.find((id: any) => id === item.id) || idisJson?.find((idjson:any)=> idjson === item.id) ? (
                             <p style={{ color: 'green' }}>
                               ! This item is already in the cart !
                             </p>

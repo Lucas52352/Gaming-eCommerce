@@ -16,10 +16,13 @@ export const cartSlice = createSlice({
         },
         userCart:(state,action)=>{
             state.user = action.payload
+        },
+        clearState:(state)=>{
+            state.cartProducts = []
         }
     }
 })
 
-export const {cartProd, userCart, deleteCartProd} = cartSlice.actions
+export const {cartProd, userCart, deleteCartProd, clearState} = cartSlice.actions
 
 export default cartSlice.reducer
