@@ -107,7 +107,10 @@ label{
     font-family: 'Quicksand', sans-serif;
     font-size: 26px;
 }
-.containerPP{
+#containerPP{
+    width: 100%;
     padding: 20px;
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

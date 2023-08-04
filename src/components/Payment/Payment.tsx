@@ -193,43 +193,30 @@ function Payment() {
         </button>
       </form>
       <div>
-        {prodById ? (
-          <div className='checkout'>
+      <div className='checkout'>
             <img src={img} alt='' height={200} />
-            {prodById.map((item: any) => {
+            {allCartJSON.map((items: any) => {
               return (
-                <div className='containerPP'>
-                      <div className='containerCheck'>
-                        <p className='checkoutP'>{item.name}</p>
-                        <p className='checkoutP'>x{item.cant}</p>
-                        <p className='checkoutP'>${item.price}</p>
-                      </div>
+                <div>
+              {items.prodById.map((prod: any) => {
+              return (
+                <>
+                <div id='containerPP' key={prod.id}>
+                  <p className='checkoutP'>{prod.name}</p>
+                  <p className='checkoutP'>x{items.cantidad}</p>
+                  <p className='checkoutP'>${prod.price * items.cantidad}</p>
                 </div>
+                <hr  className='hac'/>
+                </>
               );
+              })}
+          </div>
+        );
             })}
             <div className='checkoutPTotal'>
               <p className='totalP'>TOTAL: ${+numbers}</p>
             </div>
           </div>
-        ) :
-        <div  className='containerPP'> 
-           {allCartJSON.map((items: any) => {
-            return (
-          <div>
-        {items.prodById.map((prod: any) => {
-        return (
-          <div className='containerCheck' key={prod.id}>
-            <p className='checkoutP'>{prod.name}</p>
-            <p className='checkoutP'>x{items.cantidad}</p>
-            <p className='checkoutP'>${prod.price * items.cantidad}</p>
-          </div>
-        );
-        })}
-    </div>
-  );
-})}
-        </div> 
-        }
       </div>
     </div>
   );
